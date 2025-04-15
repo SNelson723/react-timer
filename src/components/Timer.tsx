@@ -12,8 +12,6 @@ const Timer = ({ name, duration }: TimerProps) => {
 
   if (remainingTime <= 0 && interval.current) {
     clearInterval(interval.current);
-  } else {
-    setRemainingTime(duration * 1000);
   }
 
   // Update the remaining time every 50ms => useEffect keeps the timer running after the component is mounted
@@ -28,7 +26,13 @@ const Timer = ({ name, duration }: TimerProps) => {
     if (isRunning) {
       // initialise the timer
       timer = setInterval(() => {
-        setRemainingTime((prev) => prev - 50);
+        setRemainingTime((prevTime) => {
+          // if the timer is already at 0, don't update it
+          if (prevTime <= 0) {
+            return prevTime;
+          }
+          return prevTime - 50;
+        });
       }, 50);
 
       // set the interval ref's current => therefore this doesn't clear until remaining time hits 0
