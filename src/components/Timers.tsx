@@ -1,3 +1,5 @@
-export default function Timers() {
+const Timers = () => {
   return <ul>{/* TODO ... */}</ul>;
 }
+
+export default Timers;

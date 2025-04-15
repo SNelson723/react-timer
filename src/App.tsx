@@ -4,7 +4,7 @@ import Timers from './components/Timers.tsx';
 import TimersContextProvider from './store/timersContext.tsx';
 
 // useContext makes it easier to manage cross component state
-function App() {
+const App = () => {
   return (
     <TimersContextProvider>
       <Header />

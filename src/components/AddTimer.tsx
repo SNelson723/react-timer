@@ -4,7 +4,7 @@ import Button from './UI/Button.tsx';
 import Form, { FormHandle } from './UI/Form.tsx';
 import Input from './UI/Input.tsx';
 
-export default function AddTimer() {
+const AddTimer = () => {
   const form = useRef<FormHandle>(null);
   const { addTimer } = useTimersContext();
 
@@ -27,3 +27,5 @@ export default function AddTimer() {
     </Form>
   );
 }
+
+export default AddTimer;

@@ -1,7 +1,7 @@
 import Button from "./UI/Button.tsx";
 import { useTimersContext } from "../store/timersContext.tsx";
 
-export default function Header() {
+const Header = () => {
   // The argument should be the context object created in the store that you want to reach out to
 
   const timersCtx = useTimersContext();
@@ -20,3 +20,5 @@ export default function Header() {
     </header>
   );
 }
+
+export default Header;
