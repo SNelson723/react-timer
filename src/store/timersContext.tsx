@@ -1,4 +1,4 @@
-import { createContext, type ReactNode } from "react";
+import { createContext, useContext, type ReactNode } from "react";
 import Timer from "../components/Timer";
 
 type Timer = {
@@ -22,7 +22,16 @@ type TimersContextValue = TimersState & {
 }
 
 // this fn is executed to create a context object for managing the context of application-wide data
-const TimersContext = createContext<TimersContextValue | null>(null);
+export const TimersContext = createContext<TimersContextValue | null>(null);
+
+// custom hooks
+export const useTimersContext = () => {
+  const ctx = useContext(TimersContext);
+  if (ctx === null) {
+    throw new Error("TimersContext is null. Make sure to wrap your component with TimersContextProvider.");
+  }
+  return ctx;
+};
 
 type TimersContextProviderProps = {
   children: ReactNode;
